@@ -1,39 +1,74 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-      <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username" placeholder="Enter your username">
-      </mat-form-field>
+<div class="login-container">
 
-      @if(loginForm.get('username')?.hasError('required'))
-      {
-      <mat-error>
-        Username is required
-      </mat-error>
+  <mat-card class="login-card">
 
-      }
+    <mat-card-header class="login-header">
+      <div class="login-header-content">
+        <!-- <mat-icon class="login-icon">lock</mat-icon> -->
 
+        <mat-card-title class="login-title">
+          Welcome Back
+        </mat-card-title>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" placeholder="Enter your password">
+        <p class="login-subtitle">
+          Sign in to your account
+        </p>
+      </div>
+    </mat-card-header>
 
-        @if(loginForm.get('username')?.hasError('required'))
-        {
-        <mat-error>
-          Username is required
-        </mat-error>
+    <mat-card-content>
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-        }
+        <!-- Username -->
+        <mat-form-field appearance="outline" class="login-field">
 
-      </mat-form-field>
+          <mat-icon matPrefix class="input-icon">person</mat-icon>
 
+          <mat-label>Username</mat-label>
 
-      <button mat-raised-button color="primary" type="submit">Login</button>
-    </form>
-  </mat-card-content>
+          <input
+            matInput
+            formControlName="username"
+            placeholder="Enter your username">
 
+          @if (username.invalid && username.touched) {
+            <mat-error>Username is required</mat-error>
+          }
 
-</mat-card>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="login-field">
+
+          <mat-icon matPrefix class="input-icon">lock</mat-icon>
+
+          <mat-label>Password</mat-label>
+
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password">
+
+          @if (password.invalid && password.touched) {
+            <mat-error>Password is required</mat-error>
+          }
+
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="login-button">
+
+          Sign In
+
+        </button>
+
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

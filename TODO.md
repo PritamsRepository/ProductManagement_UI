@@ -1,0 +1,1 @@
+# TODO: Tailwind CSS Login Styling\n\n## Pending Steps:\n1. ✅ Create TODO.md (current)\n2. Update src/app/components/login/login.component.html with Tailwind classes for centering and ivory background.\n3. Empty src/app/components/login/login.component.css.\n4. Test with `ng serve`.\n5. Mark complete and attempt_completion.\n\nProgress: 1/5
