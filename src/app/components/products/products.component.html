@@ -1,3 +1,108 @@
-<p>
-  products works!
-</p>
+<div class="products-container">
+
+  <!-- Toolbar -->
+  <div class="toolbar flex justify-between items-center mb-4">
+
+    <!-- LEFT : Add Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addProduct()"
+      class="add-button">
+      Add Product
+    </button>
+
+    <!-- RIGHT : Search -->
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Search products">
+    </mat-form-field>
+
+  </div>
+
+
+  <!-- TABLE -->
+  <table mat-table [dataSource]="products" matSort
+         class="products-table mat-elevation-z2 w-full">
+
+    <!-- Product ID -->
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Product ID</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.productId }}
+      </td>
+    </ng-container>
+
+    <!-- Product Name -->
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.productName }}
+      </td>
+    </ng-container>
+
+    <!-- Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.description }}
+      </td>
+    </ng-container>
+
+    <!-- Price -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.price | currency }}
+      </td>
+    </ng-container>
+
+    <!-- Category -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.category }}
+      </td>
+    </ng-container>
+
+    <!-- ACTION COLUMN -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+      <td mat-cell *matCellDef="let product">
+
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="editProduct(product)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteProduct(product.productId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+
+  <!-- PAGINATOR -->
+  <mat-paginator
+    [pageSizeOptions]="[5,10,20]"
+    showFirstLastButtons>
+  </mat-paginator>
+
+</div>
