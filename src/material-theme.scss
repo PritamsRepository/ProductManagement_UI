@@ -1,42 +1,36 @@
 @use '@angular/material' as mat;
 
-/* Required once */
+/* Required */
 @include mat.core();
 
-html {
-  height: 100%;
+/* Define palettes */
+$primary: mat.m2-define-palette(mat.$m2-deep-purple-palette);
+$accent: mat.m2-define-palette(mat.$m2-amber-palette);
+$warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$blue-palette,
-      tertiary: mat.$orange-palette
-    ),
-    typography: Roboto,
-    density: 0
-  ));
-}
+/* Light theme */
+$light-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn
+  )
+));
 
-body {
-  margin: 0;
-  height: 100%;
+@include mat.all-component-themes($light-theme);
 
-  color-scheme: light dark;
+/* Dark sidebar theme */
+$sidebar-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn
+  )
+));
 
-  background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-
-  font: var(--mat-sys-body-medium);
-}
-
-/* Custom dark theme for sidebar mat-nav-list */
 .sidebar-container {
-  @include mat.all-component-themes((
-    color: (
-      theme-type: dark,
-    )
-  ));
-  
+  @include mat.all-component-colors($sidebar-theme);
+
   --mdc-filled-list-item-primary-text-color: white;
   --mdc-filled-list-item-icon-color: white;
 }
