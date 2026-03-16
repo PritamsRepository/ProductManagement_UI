@@ -4,29 +4,21 @@
   <div class="toolbar flex justify-between items-center mb-4">
 
     <!-- LEFT : Add Button -->
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="addProduct()"
-      class="add-button">
+    <button mat-raised-button color="primary" (click)="addProduct()" class="add-button">
       Add Product
     </button>
 
     <!-- RIGHT : Search -->
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Search products">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search products">
     </mat-form-field>
 
   </div>
 
 
   <!-- TABLE -->
-  <table mat-table [dataSource]="products" matSort
-         class="products-table mat-elevation-z2 w-full">
+  <table mat-table [dataSource]="products" matSort class="products-table mat-elevation-z2 w-full">
 
     <!-- Product ID -->
     <ng-container matColumnDef="productId">
@@ -43,6 +35,13 @@
         {{ product.productName }}
       </td>
     </ng-container>
+    <!-- Category -->
+    <!-- <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.category }}
+      </td>
+    </ng-container> -->
 
     <!-- Description -->
     <ng-container matColumnDef="description">
@@ -52,21 +51,57 @@
       </td>
     </ng-container>
 
-    <!-- Price -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+    <ng-container matColumnDef="vendorPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Price</th>
       <td mat-cell *matCellDef="let product">
-        {{ product.price | currency }}
+        {{ product.vendorPrice | currency }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actualPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actual Price</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.actualPrice | currency }}
+      </td>
+
+    </ng-container>
+    <ng-container matColumnDef="receivedDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Received Date</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.receivedDate | date:'shortDate' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="manufacturingDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturing Date</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.manufacturingDate | date:'shortDate' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="expiryDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiry Date</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.expiryDate | date:'shortDate' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ingredients">
+      <th mat-header-cell *matHeaderCellDef>Ingredients</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.ingredients }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="manufacturerName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.manufacturerName }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="vendorName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.vendorName }}
       </td>
     </ng-container>
 
-    <!-- Category -->
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-      <td mat-cell *matCellDef="let product">
-        {{ product.category }}
-      </td>
-    </ng-container>
+
 
     <!-- ACTION COLUMN -->
     <ng-container matColumnDef="actions">
@@ -74,17 +109,11 @@
 
       <td mat-cell *matCellDef="let product">
 
-        <button
-          mat-icon-button
-          color="primary"
-          (click)="editProduct(product)">
+        <button mat-icon-button color="primary" (click)="editProduct(product)">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button
-          mat-icon-button
-          color="warn"
-          (click)="deleteProduct(product.productId)">
+        <button mat-icon-button color="warn" (click)="deleteProduct(product.productId)">
           <mat-icon>delete</mat-icon>
         </button>
 
@@ -100,9 +129,7 @@
 
 
   <!-- PAGINATOR -->
-  <mat-paginator
-    [pageSizeOptions]="[5,10,20]"
-    showFirstLastButtons>
+  <mat-paginator [pageSizeOptions]="[50,100,200]" showFirstLastButtons>
   </mat-paginator>
 
 </div>

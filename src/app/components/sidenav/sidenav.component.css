@@ -1,0 +1,66 @@
+.sidebar-container {
+  height: 100%;
+  background-color: #111827;
+}
+
+/* Header */
+.sidebar-header {
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border-bottom: 1px solid #374151;
+}
+
+/* Menu item text */
+.menu-item {
+  color: white !important;
+}
+
+/* Icon color */
+.menu-icon {
+  color: white !important;
+}
+
+/* Menu text spacing */
+.menu-text {
+  margin-left: 10px;
+}
+
+/* Hover effect */
+.menu-item:hover {
+  background-color: #1f2937;
+  border-radius: 6px;
+}
+
+/* Active route highlight */
+.active-menu {
+  background-color: #374151;
+  border-radius: 6px;
+}
+
+/* Strong overrides for Angular Material list-item text - fixes visibility */
+::ng-deep .menu-item {
+  --mdc-filled-list-item-container-color: transparent !important;
+  --mdc-filled-list-item-primary-text-color: white !important;
+  --mdc-filled-list-item-icon-color: white !important;
+}
+
+::ng-deep .menu-item .mat-mdc-list-item {
+  --mdc-filled-list-item-primary-text-color: white !important;
+  --mdc-filled-list-item-icon-color: white !important;
+  color: white !important;
+}
+
+::ng-deep .menu-item .mdc-list-item__primary-text,
+::ng-deep .menu-item .mdc-list-item__secondary-text {
+  color: white !important;
+}
+
+::ng-deep .active-menu {
+  --mdc-filled-list-item-container-color: #374151;
+}
+
+::ng-deep .menu-item:hover {
+  --mdc-filled-list-item-container-color: #1f2937;
+}

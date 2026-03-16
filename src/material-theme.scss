@@ -28,3 +28,15 @@ body {
 
   font: var(--mat-sys-body-medium);
 }
+
+/* Custom dark theme for sidebar mat-nav-list */
+.sidebar-container {
+  @include mat.all-component-themes((
+    color: (
+      theme-type: dark,
+    )
+  ));
+  
+  --mdc-filled-list-item-primary-text-color: white;
+  --mdc-filled-list-item-icon-color: white;
+}

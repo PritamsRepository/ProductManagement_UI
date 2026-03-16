@@ -1,0 +1,27 @@
+<div class="sidebar-container">
+
+  <div class="sidebar-header">
+    Inventory
+  </div>
+
+  <mat-nav-list>
+
+    @for (item of menuItems; track item.route) {
+
+    <a mat-list-item [routerLink]="item.route" class="menu-item text-white"  routerLinkActive="active-menu">
+
+      <mat-icon class="menu-icon">
+        {{ item.icon }}
+      </mat-icon>
+
+      <span class="menu-text">
+        {{ item.name }}
+      </span>
+
+    </a>
+
+    }
+
+  </mat-nav-list>
+
+</div>

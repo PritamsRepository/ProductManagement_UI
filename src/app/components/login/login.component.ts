@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.authService.LoginIn(loginModel).subscribe({
         next: (response) => {
           this.saveSession(response);
-          this.router.navigate(['/Products']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error('Login failed:', error);

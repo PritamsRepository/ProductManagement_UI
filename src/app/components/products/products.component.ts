@@ -27,7 +27,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   products = new MatTableDataSource<IProducts>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['productId', 'productName', 'description', 'price', 'category'];
+  displayedColumns: string[] =
+    ['productId', 'productName', 'manufacturerName', 'vendorName',
+      'receivedDate', 'manufacturingDate', 'expiryDate', 'vendorPrice',
+      'actualPrice', 'ingredients', 'description'];
+
+
   constructor() { }
 
   ngOnInit() {

@@ -1,1 +1,10 @@
-# TODO: Tailwind CSS Login Styling\n\n## Pending Steps:\n1. ✅ Create TODO.md (current)\n2. Update src/app/components/login/login.component.html with Tailwind classes for centering and ivory background.\n3. Empty src/app/components/login/login.component.css.\n4. Test with `ng serve`.\n5. Mark complete and attempt_completion.\n\nProgress: 1/5
+# Task: Fix sidenav menu item text visibility to white
+
+## Steps to complete:
+- [x] Step 1: Update src/app/components/sidenav/sidenav.component.css with ::ng-deep selectors for Material overrides  
+- [x] Step 2: Update src/material-theme.scss with custom dark theme for sidebar list  
+- [x] Step 3: Verify changes and complete task
+
+## Follow-up after edits:
+- Run `ng serve` if needed
+- Test menu visibility, hover/active states in browser
