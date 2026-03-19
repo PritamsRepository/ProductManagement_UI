@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject, ViewChild, WritableSignal } from '@angular/core';
 import { IProducts } from 'src/app/core/models/interfaces/iproducts';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { CommonModule } from '@angular/common';

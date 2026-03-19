@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ILoginResponse } from 'src/app/core/models/interfaces/ILoginResponse';
+import { AuthStore } from 'src/app/core/auth/auth.store';
 
 
 
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   private router = inject(Router);
   private authService = inject(AuthService);
+  private authStore = inject(AuthStore);
 
   constructor(private fb: FormBuilder) { }
 
@@ -39,7 +41,8 @@ export class LoginComponent implements OnInit {
       const loginModel: LoginModel = this.loginForm.value;
       this.authService.LoginIn(loginModel).subscribe({
         next: (response) => {
-          this.saveSession(response);
+          this.authStore.login(response.accessToken);
+         // this.saveSession(response);
           this.router.navigate(['/dashboard']);
         },
         error: (error) => {
